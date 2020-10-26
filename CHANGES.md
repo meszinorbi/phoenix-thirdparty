@@ -18,15 +18,3 @@
 -->
 # PHOENIX Changelog
 
-## Release thirdparty-1.0.0 - Unreleased (as of 2020-10-14)
-
-
-
-### SUB-TASKS:
-
-| JIRA | Summary | Priority | Component |
-|:---- |:---- | :--- |:---- |
-| [PHOENIX-6039](https://issues.apache.org/jira/browse/PHOENIX-6039) | Create phoenix-thirdparty main project, and add phoenix-shaded-guava as a subproject |  Major | thirdparty |
-| [PHOENIX-6038](https://issues.apache.org/jira/browse/PHOENIX-6038) | Create phoenix-thirdparty git repo |  Major | thirdparty |
-
-
