@@ -28,7 +28,7 @@
 
   <groupId>org.apache.phoenix.thirdparty</groupId>
   <artifactId>phoenix-thirdparty</artifactId>
-  <version>1.0.1-SNAPSHOT</version>
+  <version>1.1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Apache Phoenix Third-Party Libs</name>
   <description>Packaging of relocated (renamed, shaded) third-party libraries used by Phoenix.</description>
@@ -50,6 +50,7 @@
 
   <modules>
     <module>phoenix-shaded-guava</module>
+    <module>phoenix-shaded-commons-cli</module>
   </modules>
 
   <scm>
@@ -68,6 +69,7 @@
   <properties>
     <rename.offset>org.apache.phoenix.thirdparty</rename.offset>
     <guava.version>29.0-android</guava.version>
+    <commons-cli.version>1.4</commons-cli.version>
   </properties>
 
   <build>

@@ -1,0 +1,72 @@
+diff --git src/main/java/org/apache/commons/cli/DefaultParser.java src/main/java/org/apache/commons/cli/DefaultParser.java
+index d762a3e..ebc324f 100644
+--- src/main/java/org/apache/commons/cli/DefaultParser.java
++++ src/main/java/org/apache/commons/cli/DefaultParser.java
+@@ -54,7 +54,44 @@ public class DefaultParser implements CommandLineParser
+  
+     /** The required options and groups expected to be found when parsing the command line. */
+     protected List expectedOpts;
+- 
++
++    public DefaultParser() {
++        this.stripLeadingAndTrailingQuotes = true;
++    }
++
++    /** Flag indicating if balanced leading and trailing double quotes should be stripped from option arguments. */
++    private final  boolean stripLeadingAndTrailingQuotes;
++
++    /**
++     * Create a new DefaultParser instance with the specified partial matching and quote
++     * stripping policy.
++     *
++     * By "partial matching" we mean that given the following code:
++     * <pre>
++     *     {@code
++     *          final Options options = new Options();
++     *      options.addOption(new Option("d", "debug", false, "Turn on debug."));
++     *      options.addOption(new Option("e", "extract", false, "Turn on extract."));
++     *      options.addOption(new Option("o", "option", true, "Turn on option with argument."));
++     *      }
++     * </pre>
++     * with "partial matching" turned on, <code>-de</code> only matches the
++     * <code>"debug"</code> option. However, with "partial matching" disabled,
++     * <code>-de</code> would enable both <code>debug</code> as well as
++     * <code>extract</code> options.
++     * with "stripping of balanced leading and trailing double quotes from option arguments" turned
++     * on, the outermost balanced double quotes of option arguments values will be removed.
++     * ie.
++     * for <code>-o '"x"'</code> getValue() will return <code>x</code>, instead of <code>"x"</code>
++     * @param allowPartialMatching if partial matching of long options shall be enabled
++     * @param stripLeadingAndTrailingQuotes if balanced outer double quoutes should be stripped
++     */
++    public DefaultParser(final boolean allowPartialMatching,
++            final boolean stripLeadingAndTrailingQuotes) {
++        // We do not care about allowPartialMatching in this patch
++        this.stripLeadingAndTrailingQuotes = stripLeadingAndTrailingQuotes;
++    }
++
+     public CommandLine parse(Options options, String[] arguments) throws ParseException
+     {
+         return parse(options, arguments, null);
+@@ -232,7 +269,7 @@ public class DefaultParser implements CommandLineParser
+         }
+         else if (currentOption != null && currentOption.acceptsArg() && isArgument(token))
+         {
+-            currentOption.addValueForProcessing(Util.stripLeadingAndTrailingQuotes(token));
++            currentOption.addValueForProcessing(conditionallyStripLeadingAndTrailingQuotes(token));
+         }
+         else if (token.startsWith("--"))
+         {
+@@ -704,4 +741,12 @@ public class DefaultParser implements CommandLineParser
+             }
+         }
+     }
++
++    protected String conditionallyStripLeadingAndTrailingQuotes(final String token) {
++        if(stripLeadingAndTrailingQuotes) {
++            return Util.stripLeadingAndTrailingQuotes(token);
++        } else {
++            return token;
++        }
++    }
+ }
