@@ -18,6 +18,18 @@
 -->
 # PHOENIX Changelog
 
+## Release thirdparty-1.1.0 - Unreleased (as of 2021-01-29)
+
+
+
+### IMPROVEMENTS:
+
+| JIRA | Summary | Priority | Component |
+|:---- |:---- | :--- |:---- |
+| [PHOENIX-6349](https://issues.apache.org/jira/browse/PHOENIX-6349) | Add and use commons-cli to phoenix-thirdparty |  Major | . |
+
+
+
 ## Release thirdparty-1.0.0 - Unreleased (as of 2020-10-14)
 
 

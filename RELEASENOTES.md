@@ -16,6 +16,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 -->
+
+
+# PHOENIX  thirdparty-1.1.0 Release Notes
+
+These release notes cover new developer and user-facing incompatibilities, important issues, features, and major improvements.
+
+
+---
+
+* [PHOENIX-6349](https://issues.apache.org/jira/browse/PHOENIX-6349) | *Major* | **Add and use commons-cli to phoenix-thirdparty**
+
+Added phoenix-shaded-commons-cli to phoenix-thirdparty.
+This helps avoid classpath conflicts and includes a patch on top of commons-cli 1.4.0 that fixes CLI-254.
+
+
 # PHOENIX  thirdparty-1.0.0 Release Notes
 
 These release notes cover new developer and user-facing incompatibilities, important issues, features, and major improvements.
