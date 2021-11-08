@@ -28,111 +28,23 @@
   <artifactId>phoenix-shaded-commons-cli</artifactId>
   <name>Apache Phoenix Patched and Relocated (Shaded) Commons-CLI</name>
   <description>
-    Pulls down commons-cli, patches it, compiles, and then relocates/shades.
+    Pulls down commons-cli, relocates it and then makes a new jar with it.
   </description>
   <build>
     <plugins>
       <plugin>
-        <!--Clean needs to purge src/main/java since this is where
-             the unpack of commons-cli is overlaid. Do it for usual
-             clean goal but also before we unpack in case patches
-             delete/add files. We use src/main/java instead of dir
-             under 'target' because the jar plugin is dumb, hard to
-             make it source from other then src/main/java.-->
         <artifactId>maven-clean-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>pre-generate-sources</id>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>clean</goal>
-            </goals>
-          </execution>
-        </executions>
         <configuration>
           <filesets>
             <fileset>
-              <directory>${basedir}/src/main/java</directory>
+              <directory>${basedir}</directory>
               <includes>
-                <include>**/**</include>
+                <include>dependency-reduced-pom.xml</include>
               </includes>
-              <followSymlinks>false</followSymlinks>
             </fileset>
           </filesets>
         </configuration>
       </plugin>
-      <plugin>
-        <!--Download our dependency src, i.e. commons-cli, and
-             unpack it. Overlays src/main/java so ready for
-            compile-time (the jar plugin expects src in
-            src/main/java)-->
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>unpack</id>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>unpack</goal>
-            </goals>
-            <configuration>
-              <artifactItems>
-                <artifactItem>
-                  <groupId>commons-cli</groupId>
-                  <artifactId>commons-cli</artifactId>
-                  <version>${commons-cli.version}</version>
-                  <classifier>sources</classifier>
-                  <type>jar</type>
-                  <overWrite>true</overWrite>
-                  <outputDirectory>${basedir}/src/main/java</outputDirectory>
-                </artifactItem>
-              </artifactItems>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-      </plugin>
-      <!--Apply our patches to the unpacked commons-cli src-->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-patch-plugin</artifactId>
-        <version>1.2</version>
-        <configuration>
-          <targetDirectory>${basedir}</targetDirectory>
-          <skipApplication>false</skipApplication>
-        </configuration>
-        <executions>
-          <execution>
-            <id>patch</id>
-            <phase>process-sources</phase>
-            <goals>
-              <goal>apply</goal>
-            </goals>
-            <configuration>
-              <strip>0</strip>
-              <patchDirectory>${basedir}/src/main/patches</patchDirectory>
-              <patchTrackingFile>${project.build.directory}/patches-applied.txt</patchTrackingFile>
-              <naturalOrderProcessing>true</naturalOrderProcessing>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>attach-sources</id>
-            <goals>
-              <goal>jar-no-fork</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <!--Above we built a jar. Now at package step, do relocation/shade-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-shade-plugin</artifactId>
@@ -157,4 +69,11 @@
       </plugin>
     </plugins>
   </build>
+  <dependencies>
+    <dependency>
+      <groupId>commons-cli</groupId>
+      <artifactId>commons-cli</artifactId>
+      <version>${commons-cli.version}</version>
+    </dependency>
+  </dependencies>
 </project>
