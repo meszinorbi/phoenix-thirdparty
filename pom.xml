@@ -68,7 +68,7 @@
 
   <properties>
     <rename.offset>org.apache.phoenix.thirdparty</rename.offset>
-    <guava.version>29.0-android</guava.version>
+    <guava.version>31.0.1-android</guava.version>
     <commons-cli.version>1.5.0</commons-cli.version>
   </properties>
 
