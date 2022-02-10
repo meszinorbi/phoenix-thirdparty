@@ -28,7 +28,7 @@
 
   <groupId>org.apache.phoenix.thirdparty</groupId>
   <artifactId>phoenix-thirdparty</artifactId>
-  <version>1.2.0-SNAPSHOT</version>
+  <version>2.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Apache Phoenix Third-Party Libs</name>
   <description>Packaging of relocated (renamed, shaded) third-party libraries used by Phoenix.</description>
