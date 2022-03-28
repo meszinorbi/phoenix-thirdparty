@@ -18,6 +18,33 @@
 -->
 # PHOENIX Changelog
 
+## Release thirdparty-2.0.0 - Unreleased (as of 2022-03-28)
+
+
+
+### IMPROVEMENTS:
+
+| JIRA | Summary | Priority | Component |
+|:---- |:---- | :--- |:---- |
+| [PHOENIX-6575](https://issues.apache.org/jira/browse/PHOENIX-6575) | Replace patched commons-cli with original one when a release with CLI-254 is available |  Major | thirdparty |
+| [PHOENIX-6641](https://issues.apache.org/jira/browse/PHOENIX-6641) | Bump Guava to 31.0.1 in phoenix-thirdparty |  Major | thirdparty |
+
+
+### BUG FIXES:
+
+| JIRA | Summary | Priority | Component |
+|:---- |:---- | :--- |:---- |
+| [PHOENIX-6353](https://issues.apache.org/jira/browse/PHOENIX-6353) | Fix phoenix-thirdparty rat warnings, and update CHANGES.md, RELEASE\_NOTES.md |  Minor | thirdparty |
+
+
+### OTHER:
+
+| JIRA | Summary | Priority | Component |
+|:---- |:---- | :--- |:---- |
+| [PHOENIX-6648](https://issues.apache.org/jira/browse/PHOENIX-6648) | Change next release version of phoenix-thirdparty to 2.0.0 |  Major | thirdparty |
+
+
+
 ## Release thirdparty-1.1.0 - Unreleased (as of 2021-01-29)
 
 
