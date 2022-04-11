@@ -38,8 +38,6 @@ Phoenix-thirdparty now includes Guava 31.0.1.
 
 
 
-
-
 # PHOENIX  thirdparty-1.1.0 Release Notes
 
 These release notes cover new developer and user-facing incompatibilities, important issues, features, and major improvements.
