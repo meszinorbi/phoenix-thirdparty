@@ -18,6 +18,26 @@
 -->
 # PHOENIX Changelog
 
+## Release thirdparty-2.1.0 - Unreleased (as of 2023-12-13)
+
+
+
+### IMPROVEMENTS:
+
+| JIRA | Summary | Priority | Component |
+|:---- |:---- | :--- |:---- |
+| [PHOENIX-7080](https://issues.apache.org/jira/browse/PHOENIX-7080) | Switch phoenix-thirdparty to guava-jre from guava-android |  Major | thirdparty |
+
+
+### OTHER:
+
+| JIRA | Summary | Priority | Component |
+|:---- |:---- | :--- |:---- |
+| [PHOENIX-7142](https://issues.apache.org/jira/browse/PHOENIX-7142) | Bump phoenix-thirdparty version to 2.1 |  Major | thirdparty |
+| [PHOENIX-6992](https://issues.apache.org/jira/browse/PHOENIX-6992) | Upgrade Guava to 32.1.1 |  Major | thirdparty |
+
+
+
 ## Release thirdparty-2.0.0 - Unreleased (as of 2022-04-11)
 
 

@@ -16,6 +16,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 -->
+# PHOENIX  thirdparty-2.1.0 Release Notes
+
+These release notes cover new developer and user-facing incompatibilities, important issues, features, and major improvements.
+
+
+---
+
+* [PHOENIX-7080](https://issues.apache.org/jira/browse/PHOENIX-7080) | *Major* | **Switch phoenix-thirdparty to guava-jre from guava-android**
+
+phoenix-thirdparty now includes guava-jre instead of guava-android.
+
+
+
 # PHOENIX  thirdparty-2.0.0 Release Notes
 
 These release notes cover new developer and user-facing incompatibilities, important issues, features, and major improvements.
